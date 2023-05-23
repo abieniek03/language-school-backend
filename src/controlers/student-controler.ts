@@ -11,7 +11,7 @@ const registerStudent = async (req: Request, res: Response) => {
 			id: new Types.ObjectId(),
 			firstName: req.body.firstName,
 			lastName: req.body.lastName,
-			group: req.body.group,
+			language: req.body.language,
 			address: req.body.address,
 			postalCode: req.body.postalCode,
 			city: req.body.city,
@@ -53,8 +53,8 @@ const getStudentsByName = async (req: Request, res: Response) => {
 	}
 };
 
-const getStudentsByGroup = async (req: Request, res: Response) => {
-	const students = await studentModel.find({ group: req.url.split('/')[2] });
+const getStudentsByLanguage = async (req: Request, res: Response) => {
+	const students = await studentModel.find({ language: req.url.split('/')[2] });
 
 	if (students.length !== 0) {
 		return res.status(200).json({ students });
@@ -63,7 +63,7 @@ const getStudentsByGroup = async (req: Request, res: Response) => {
 	}
 };
 
-const getStudentsByNameAndGroup = async (req: Request, res: Response) => {
+const getStudentsByNameAndLanguage = async (req: Request, res: Response) => {
 	const students = await studentModel.find({
 		$and: [
 			{
@@ -71,7 +71,7 @@ const getStudentsByNameAndGroup = async (req: Request, res: Response) => {
 					{ firstName: { $regex: req.url.split('/')[2], $options: 'i' } },
 					{ lastName: { $regex: req.url.split('/')[2], $options: 'i' } },
 				],
-				group: req.url.split('/')[3],
+				language: req.url.split('/')[3],
 			},
 		],
 	});
@@ -107,8 +107,8 @@ export default {
 	registerStudent,
 	getAllStudents,
 	getStudentsByName,
-	getStudentsByGroup,
-	getStudentsByNameAndGroup,
+	getStudentsByLanguage,
+	getStudentsByNameAndLanguage,
 	getStudentProfileData,
 	deleteStudent,
 };

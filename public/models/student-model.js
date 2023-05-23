@@ -35,7 +35,7 @@ const studentSchema = new mongoose_1.Schema({
         required: true,
         trim: true,
     },
-    group: {
+    language: {
         type: Number,
         required: true,
     },

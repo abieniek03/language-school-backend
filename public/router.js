@@ -9,8 +9,8 @@ const router = express_1.default.Router();
 // studnet
 router.get('/students', student_controler_1.default.getAllStudents);
 router.get('/students-name/:name', student_controler_1.default.getStudentsByName);
-router.get('/students-group/:group', student_controler_1.default.getStudentsByGroup);
-router.get('/students-name-group/:name/:group', student_controler_1.default.getStudentsByNameAndGroup);
+router.get('/students-language/:language', student_controler_1.default.getStudentsByLanguage);
+router.get('/students-name-language/:name/:language', student_controler_1.default.getStudentsByNameAndLanguage);
 router.get('/student-profile/:id', student_controler_1.default.getStudentProfileData);
 router.get('/student-delete/:id', student_controler_1.default.deleteStudent);
 router.post('/student-register', student_controler_1.default.registerStudent);

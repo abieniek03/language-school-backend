@@ -3,7 +3,7 @@ import mongoose, { Document, Schema } from 'mongoose';
 export interface IStudent {
 	firstName: string;
 	lastName: string;
-	group: string;
+	language: string;
 	address: string;
 	postalCode: string;
 	city: string;
@@ -25,7 +25,7 @@ const studentSchema: Schema = new Schema(
 			required: true,
 			trim: true,
 		},
-		group: {
+		language: {
 			type: Number,
 			required: true,
 		},

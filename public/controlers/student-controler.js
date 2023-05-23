@@ -21,7 +21,7 @@ const registerStudent = (req, res) => __awaiter(void 0, void 0, void 0, function
             id: new mongoose_1.Types.ObjectId(),
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            group: req.body.group,
+            language: req.body.language,
             address: req.body.address,
             postalCode: req.body.postalCode,
             city: req.body.city,
@@ -60,8 +60,8 @@ const getStudentsByName = (req, res) => __awaiter(void 0, void 0, void 0, functi
         return res.status(404).json({ commnicate: 'Nie znaleziono żadnego ucznia w tej grupie.' });
     }
 });
-const getStudentsByGroup = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const students = yield student_model_1.default.find({ group: req.url.split('/')[2] });
+const getStudentsByLanguage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const students = yield student_model_1.default.find({ language: req.url.split('/')[2] });
     if (students.length !== 0) {
         return res.status(200).json({ students });
     }
@@ -69,7 +69,7 @@ const getStudentsByGroup = (req, res) => __awaiter(void 0, void 0, void 0, funct
         return res.status(404).json({ commnicate: 'Nie znaleziono żadnego ucznia w tej grupie.' });
     }
 });
-const getStudentsByNameAndGroup = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getStudentsByNameAndLanguage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const students = yield student_model_1.default.find({
         $and: [
             {
@@ -77,7 +77,7 @@ const getStudentsByNameAndGroup = (req, res) => __awaiter(void 0, void 0, void 0
                     { firstName: { $regex: req.url.split('/')[2], $options: 'i' } },
                     { lastName: { $regex: req.url.split('/')[2], $options: 'i' } },
                 ],
-                group: req.url.split('/')[3],
+                language: req.url.split('/')[3],
             },
         ],
     });
@@ -111,8 +111,8 @@ exports.default = {
     registerStudent,
     getAllStudents,
     getStudentsByName,
-    getStudentsByGroup,
-    getStudentsByNameAndGroup,
+    getStudentsByLanguage,
+    getStudentsByNameAndLanguage,
     getStudentProfileData,
     deleteStudent,
 };
