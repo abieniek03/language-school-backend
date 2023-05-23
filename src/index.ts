@@ -25,6 +25,6 @@ server.get('/', (req: Request, res: Response) => {
 });
 
 // routes
-server.use('/', router);
+server.use('/api', router);
 
 server.listen(port, () => console.log(`⚡️[server]: Server is running at http://localhost:${port}`));

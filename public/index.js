@@ -25,5 +25,5 @@ server.get('/', (req, res) => {
     res.send('Siema👋');
 });
 // routes
-server.use('/', router_1.default);
+server.use('/api', router_1.default);
 server.listen(port, () => console.log(`⚡️[server]: Server is running at http://localhost:${port}`));
