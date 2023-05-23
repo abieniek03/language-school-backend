@@ -1,8 +1,12 @@
 import express from 'express';
+import testControler from './controlers/test-controler';
 import studentControler from './controlers/student-controler';
 import adminControler from './controlers/admin-controler';
 
 const router = express.Router();
+
+// test
+router.get('/test', testControler.getTest);
 
 // studnet
 router.get('/students', studentControler.getAllStudents);

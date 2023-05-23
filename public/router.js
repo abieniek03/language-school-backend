@@ -3,9 +3,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 const express_1 = __importDefault(require("express"));
+const test_controler_1 = __importDefault(require("./controlers/test-controler"));
 const student_controler_1 = __importDefault(require("./controlers/student-controler"));
 const admin_controler_1 = __importDefault(require("./controlers/admin-controler"));
 const router = express_1.default.Router();
+// test
+router.get('/test', test_controler_1.default.getTest);
 // studnet
 router.get('/students', student_controler_1.default.getAllStudents);
 router.get('/students-name/:name', student_controler_1.default.getStudentsByName);
